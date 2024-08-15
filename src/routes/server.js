@@ -5,9 +5,11 @@ const app = express();
 app.use(express.json());
 app.use(bookRouter);
 const Book = require("./db/models/bookmodel")
+const Author = require("./db/models/authormodel")
 
 function syncTables() {
-    Book.sync({alter:true})
+    Book.sync({alter:true}),
+    Author.sync({alter:true})
 }
 
 

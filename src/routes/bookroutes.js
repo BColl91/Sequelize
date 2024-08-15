@@ -1,25 +1,24 @@
-const {Router} = require("express");
+const { Router } = require("express");
 const bookRouter = Router();
 const addBook = require("../controllers/addBook");
-// import listbooks from controllers folder
-// import update author from controllers folder
-// import update genre from controlelrs folder
-// import deleteBook from controllers folder
+const listBooks = require("../controllers/listBooks");
+const updateAuthor = require("../controllers/updateAuthor");
+const updateGenre = require("../controllers/updateGenre");
+const delBook = require("../controllers/delBook");
+const addAuthor = require("../controllers/addAuthor");
+const delAuthor = require("../controllers/delAuthor");
+const listBooksFromAuthor = require("../controllers/listBooksFromAuthor");
 
-//create
-bookRouter.post("/addBook", addBook)
+bookRouter.post("/books", addBook);
+bookRouter.get("/books", listBooks);
+bookRouter.put("/books/:id/author", updateAuthor);
+bookRouter.put("/books/:id/genre", updateGenre);
+bookRouter.delete("/books/:id", delBook);
+
+bookRouter.post("/authors", addAuthor);
+bookRouter.delete("/authors/:id", delAuthor);
 
 
-//READ = list all books in db
-//bookRouter.get("/listBooks", listBooks);
-
-//UPDATE = update author
-// bookRouter.something
-
-//UPDATE = update genre
-// bookRouter.something
-
-//DELETE = delete a title
-// bookRouter.something
+bookRouter.get("/authors/:authorId/books", listBooksFromAuthor);
 
 module.exports = bookRouter;
