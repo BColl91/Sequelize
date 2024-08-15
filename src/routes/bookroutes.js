@@ -9,16 +9,16 @@ const addAuthor = require("../controllers/addAuthor");
 const delAuthor = require("../controllers/delAuthor");
 const listBooksFromAuthor = require("../controllers/listBooksFromAuthor");
 
-bookRouter.post("/books", addBook);
-bookRouter.get("/books", listBooks);
-bookRouter.put("/books/:id/author", updateAuthor);
+bookRouter.post("/addBook", addBook);
+bookRouter.get("/listBooks", listBooks);
+bookRouter.put("/updateAuthor", updateAuthor);
 bookRouter.put("/books/:id/genre", updateGenre);
 bookRouter.delete("/books/:id", delBook);
 
-bookRouter.post("/authors", addAuthor);
+bookRouter.post("/addAuthor", addAuthor);
 bookRouter.delete("/authors/:id", delAuthor);
 
+bookRouter.get("/listBooksFromAuthor", listBooksFromAuthor);
 
-bookRouter.get("/authors/:authorId/books", listBooksFromAuthor);
 
 module.exports = bookRouter;

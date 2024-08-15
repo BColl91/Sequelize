@@ -1,15 +1,18 @@
 const { DataTypes } = require('sequelize');
-const SQLconnection = require("../connection.js")
+const SQLconnection = require("../../db/connection.js")
 
-const Author = sequelize.define('Author', {
-  name: {
+const Author = SQLconnection.define('Author', {
+    author_id: {
+        type: DataTypes.BIGINT,
+        unique: true,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    name: {
     type: DataTypes.STRING,
     allowNull: false,
-  },
-  title: {
-    type: DataTypes.TEXT,
-    allowNull: true,
-  },
+  }
 });
 
 module.exports = Author;

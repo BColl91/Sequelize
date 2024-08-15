@@ -1,12 +1,21 @@
-const { Book } = require('../db/models/authormodel'); 
+const Book = require("../db/models/bookmodel");
 
 const listBooksFromAuthor = async (req, res) => {
-  const { authorId } = req.params;
   try {
-    const books = await Book.findAll({ where: { authorId } });
-    res.json(books);
+    const result = await Book.findAll({
+        where: {
+            author: req.body.author,
+        }
+    });
+
+    console.log(result);
+    res.status(201).json({
+      message: `Books in database by author ${req.body.author}:`,
+      book: result,
+    });
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch books for the author" });
+    console.log(error.errors[0]);
+    res.status(418).json({ msg: "Error: see error code", error: error });
   }
 };
 

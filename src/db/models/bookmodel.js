@@ -14,8 +14,8 @@ const Book = SQLconnection.define("Book",{
         unique: true,
         allowNull: false
     },
-    author: {
-        type: DataTypes.STRING
+    author_id: {
+        type: DataTypes.BIGINT
     },
     genre: {
         type: DataTypes.STRING
