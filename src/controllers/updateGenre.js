@@ -1,18 +1,21 @@
 const Book = require("../db/models/bookmodel");
 
 const updateGenre = async (req, res) => {
-  const { id } = req.params;
-  const { genre } = req.body;
-
   try {
-    const updated = await Book.update({ genre }, { where: { id } });
-    if (updated[0] > 0) {
-      res.json({ message: "Genre updated successfully" });
-    } else {
-      res.status(404).json({ error: "Book not found" });
-    }
+    const result = await Book.update(
+      { genre: req.body.genre },
+      { where: { title: req.body.title } }
+    );
+    const updatedBook = await Book.findOne({
+      where: { title: req.body.title },
+    });
+    res.status(201).json({
+      message: `Genre of ${req.body.title} updated`,
+      book: updatedBook,
+    });
   } catch (error) {
-    res.status(500).json({ error: "Failed to update genre" });
+    console.log(error.errors[0]);
+    res.status(418).json({ msg: "Error", error: error });
   }
 };
 

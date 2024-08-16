@@ -1,8 +1,8 @@
 const Book = require("../db/models/bookmodel");
 
-const listBooksFromAuthor = async (req, res) => {
+const listABookFromAuthor = async (req, res) => {
   try {
-    const result = await Book.findAll({
+    const result = await Book.findOne({
         where: {
             author: req.body.author,
         }
@@ -10,13 +10,13 @@ const listBooksFromAuthor = async (req, res) => {
 
     console.log(result);
     res.status(201).json({
-      message: `Books in database by author ${req.body.author}:`,
+      message: `Book by author ${req.body.author}:`,
       book: result,
     });
   } catch (error) {
-    console.log(error);
+    console.log(error.errors[0]);
     res.status(418).json({ msg: "Error", error: error });
   }
 };
 
-module.exports = listBooksFromAuthor;
+module.exports = listABookFromAuthor;

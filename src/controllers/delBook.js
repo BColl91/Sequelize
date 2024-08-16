@@ -12,6 +12,7 @@ const delBook = async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ error: "Failed to delete book" });
+    console.log("line 15", error)
   }
 };
 
