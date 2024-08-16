@@ -6,14 +6,13 @@ const delBook = async (req, res) => {
   try {
     const deleted = await Book.destroy({ where: { id } });
     if (deleted) {
-      res.status(204).json({ message: "Book deleted successfully" });
-    } else {
-      res.status(404).json({ error: "Book not found" });
+      res.status(201).json({ message: "Book deleted successfully",
+        book: result,
+      });
+    } catch (error) {
+      console.log(error.errors[0]);
+      res.status(418).json({ msg: "Error", error: error });
     }
-  } catch (error) {
-    res.status(500).json({ error: "Failed to delete book" });
-    console.log("line 15", error)
-  }
 };
 
 module.exports = delBook;
