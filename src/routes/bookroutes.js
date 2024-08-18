@@ -22,7 +22,7 @@ bookRouter.delete("/delBook", delBook);
 bookRouter.get("/listABookFromAuthor", listABookFromAuthor);
 bookRouter.get("/listBooksFromAuthor", listBooksFromAuthor);
 
-bookRouter.delete("/delAuthor", delAuthor);
+bookRouter.delete('/authors/:id', delAuthor);
 bookRouter.post("/addAuthor", addAuthor);
 bookRouter.put("/updateAuthor", updateAuthor);
 
