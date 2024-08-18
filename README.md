@@ -14,9 +14,11 @@
 
 ```bash
 npm install
+```
 
-
+```bash
 node src/server.js
+```
 
 
 -(Read me note taken from @codejamie: https://github.com/codejamie/sequelize?tab=readme-ov-file#week-08---sequelize-demo-code )
