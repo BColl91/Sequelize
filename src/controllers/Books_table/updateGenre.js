@@ -1,4 +1,4 @@
-const Book = require("../db/models/bookmodel");
+const Book = require("../../db/models/bookmodel");
 
 const updateGenre = async (req, res) => {
   try {
@@ -6,9 +6,11 @@ const updateGenre = async (req, res) => {
       { genre: req.body.genre },
       { where: { title: req.body.title } }
     );
+
     const updatedBook = await Book.findOne({
       where: { title: req.body.title },
     });
+
     res.status(201).json({
       message: `Genre of ${req.body.title} updated`,
       book: updatedBook,

@@ -1,4 +1,4 @@
-const Author = require("../db/models/authormodel");
+const Author = require("../../db/models/authormodel");
 
 const delAuthor = async (req, res) => {
   const { id } = req.params;
@@ -12,6 +12,7 @@ const delAuthor = async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ error: "Failed to delete author" });
+    console.log("Author ERROR:", error)
   }
 };
 

@@ -1,4 +1,5 @@
-const Book = require("../db/models/bookmodel");
+const BookModel = require('../../db/models/bookmodel.js');
+
 
 const addBook = async (req,res) => {
     try {

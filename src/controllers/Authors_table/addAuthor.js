@@ -1,4 +1,4 @@
-const Author = require("../db/models/authormodel");
+const Author = require("../../db/models/authormodel");
 
 const addAuthor = async (req, res) => {
   const { name, bio } = req.body;

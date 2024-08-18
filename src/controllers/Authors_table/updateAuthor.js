@@ -1,5 +1,5 @@
-const Book = require("../db/models/bookmodel");
-const Author = require("../db/models/authormodel");
+const Book = require("../../db/models/bookmodel");
+const Author = require("../../db/models/authormodel");
 
 const updateAuthor = async (req, res) => {
   const { id } = req.body;
